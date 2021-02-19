@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HYDERABAD JOBS</title>
+
+
+</head>
+<body>
+
+    <h1>Hyderabad jobs information</h1>
+
+    <img src="{% static 'images/hyd1.jpg' %}" alt="Hyderabad jobs image 1" width="200" height="200">
+    <img src="{% static 'images/hyd2.jpg' %}" alt="Hyderabad jobs image 2" width="200" height="200">
+    <img src="{% static 'images/hyd3.jpg' %}" alt="Hyderabad jobs image 3" width="200" height="200">
+
+    <hr>
+    {% if jobs_list %}
+    <table id="tab">
+        <thead>
+            <th>Date</th>
+            <th>Company</th>
+            <th>Title</th>
+            <th>Eligibility</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+
+        </thead>
+        {% for job in jobs_list %}
+        <tr>
+            <td>{{ job.date }}</td>
+            <td>{{ job.company }}</td>
+            <td>{{ job.title }}</td>
+            <td>{{ job.eligibility }}</td>
+            <td>{{ job.address }}</td>
+            <td>{{ job.email }}</td>
+            <td>{{ job.phonenumber }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% include 'durgadj_fronback_api_app/pagination.html' with page=jobs_list %}
+    {% else %}
+    <p>No jobs Found in Hyderabad</p>
+    {% endif %}
+
+
+</body>
+</html>
